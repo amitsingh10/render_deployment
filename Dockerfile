@@ -6,13 +6,13 @@ WORKDIR /app
 # Sabhi config files copy karein
 COPY package.json bun.lock* bunfig.toml* ./
 RUN bun install
-RUN npm install
+#RUN npm install
 
 
 # Source code copy aur compile karein
 COPY . .
-#RUN bun run build
-RUN npm run build
+RUN bun run build
+#RUN npm run build
 
 # Stage 2: Nginx Web Server
 FROM nginx:alpine
