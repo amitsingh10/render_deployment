@@ -1,0 +1,4 @@
+- [x] Repeat only original items in saved sequence; add products and adjust quantities.
+- [x] Serial numbers and Excel export for orders.
+- [x] Verify admin-created stall login and assigned-stall history access.
+- [x] Run rule tests and check the complete order flow.

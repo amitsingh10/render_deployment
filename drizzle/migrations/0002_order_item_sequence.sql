@@ -1,0 +1,2 @@
+ALTER TABLE public.order_items ADD COLUMN position integer NOT NULL DEFAULT 0;
+COMMENT ON COLUMN public.order_items.position IS 'One-based item sequence for repeat orders and exports; legacy items have zero because original insertion order was not stored.';
