@@ -10,7 +10,7 @@ RUN bun install
 # Source code copy aur compile karein
 COPY . .
 #RUN bun run build
-RUN run npm run build
+RUN npm run build
 
 # Stage 2: Nginx Web Server
 FROM nginx:alpine
