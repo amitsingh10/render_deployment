@@ -6,6 +6,8 @@ WORKDIR /app
 # Sabhi config files copy karein
 COPY package.json bun.lock* bunfig.toml* ./
 RUN bun install
+RUN npm install
+
 
 # Source code copy aur compile karein
 COPY . .
