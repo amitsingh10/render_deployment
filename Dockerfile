@@ -1,15 +1,22 @@
-FROM oven/bun:1 AS build
+# Stage 1: Build stage
+FROM oven/bun:latest AS build
 
 WORKDIR /app
 
-COPY package.json bun.lock bunfig.toml ./
-RUN bun install --frozen-lockfile
+# Sabhi config files copy karein
+COPY package.json bun.lock* bunfig.toml* ./
+RUN bun install
 
+# Source code copy aur compile karein
 COPY . .
 RUN bun run build
 
+# Stage 2: Nginx Web Server
 FROM nginx:alpine
 
-COPY --from=build /app/dist /usr/share/nginx/html
+# Vinxi/TanStack Start ka static output copy karein
+COPY --from=build /app/.output/public /usr/share/nginx/html
 
 EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
